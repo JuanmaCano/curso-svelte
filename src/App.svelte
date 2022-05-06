@@ -1,30 +1,34 @@
 <script>
-	export let name;
+	// your script goes here
+	import Navbar from './design/header.svelte';
+	import Card from './posts/card.svelte';
+	const color = 'danger';
+	let posts = [
+		{
+			id: '1',
+			title: 'Trabajando con Svelte',
+			description: 'Realizando el curso de svelte',
+			img: 'https://cdn.pixabay.com/photo/2016/05/07/16/52/sea-1377712__340.jpg',
+		},
+		{
+			id: '2',
+			title: 'Trabajando con Vue',
+			description: 'Realizando el curso de Vue',
+			img: 'https://cdn.pixabay.com/photo/2016/04/25/18/07/halcyon-1352522__340.jpg',
+		},
+		{
+			id: '3',
+			title: 'Trabajando con React',
+			description: 'Realizando el curso de React',
+			img: 'https://cdn.pixabay.com/photo/2018/03/08/18/40/bald-eagle-3209427__340.jpg',
+		},
+	];
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<Navbar title="Components in Svelte" {color} />
+<Navbar title="Components in Svelte" color="warning" />
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+{#each posts as { title, description, img }}
+	<!-- content here -->
+	<Card {title} {img} {description} />
+{/each}
