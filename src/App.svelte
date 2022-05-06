@@ -1,7 +1,7 @@
 <script>
 	// your script goes here
 	import Navbar from './design/header.svelte';
-	import Card from './posts/card.svelte';
+	import CardGrid from './posts/cardGrid.svelte';
 	const color = 'danger';
 	let posts = [
 		{
@@ -28,7 +28,6 @@
 <Navbar title="Components in Svelte" {color} />
 <Navbar title="Components in Svelte" color="warning" />
 
-{#each posts as { title, description, img }}
-	<!-- content here -->
-	<Card {title} {img} {description} />
-{/each}
+<div class="container">
+	<CardGrid {posts} />
+</div>
