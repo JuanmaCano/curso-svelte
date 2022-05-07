@@ -1,8 +1,9 @@
 <script>
 	export let title;
+	let show = false;
 </script>
 
-<div class="jumbotron mt-4">
+<div class="jumbotron mt-4" on:mouseenter={() => (show = true)} on:mouseleave={() => (show = false)}>
 	<h1>{title}</h1>
 	<h2>
 		<slot name="subtitle" />
@@ -10,13 +11,14 @@
 	<p>
 		<slot name="paragraph" />
 	</p>
+	<slot {show} />
 </div>
 
 <style>
 	.jumbotron {
 		padding: 2rem;
-		background: lightsteelblue;
-		color: white;
+		background: whitesmoke;
+		color: grey;
 		border-radius: 0.75rem;
 	}
 	h2 {

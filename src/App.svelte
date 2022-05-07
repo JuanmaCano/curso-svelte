@@ -48,9 +48,16 @@
 </div>
 
 <div class="container">
-	<Jumbotron title="Jumbotron">
+	<Jumbotron title="Jumbotron" let:show>
 		<span slot="subtitle">Subtitle</span>
 		<span slot="paragraph"> Lorem ipsum, dolor sit amet consectetur </span>
+		<div class:show>
+			{#if show}
+				<h3>Detected mouse over this component</h3>
+			{:else}
+				<h3>Put your mouse over</h3>
+			{/if}
+		</div>
 	</Jumbotron>
 </div>
 
