@@ -1,4 +1,5 @@
 <script>
+	import LifeCycle from './design/lifeCycle.svelte';
 	import Navbar from './design/header.svelte';
 	import CardGrid from './posts/cardGrid.svelte';
 	import InputCustom from './design/inputCustom.svelte';
@@ -28,6 +29,7 @@
 			img: 'https://cdn.pixabay.com/photo/2018/03/08/18/40/bald-eagle-3209427__340.jpg',
 		},
 	];
+	let life = false; // show or not lifeCycle component
 	function addPost() {
 		const nuevoPost = {
 			id: parseInt(Math.random() * 100).toString(),
@@ -42,6 +44,14 @@
 
 <Navbar title="Components in Svelte" {color} />
 <Navbar title="Components in Svelte" color="warning" />
+
+<div class="container mt-4">
+	Active LifeCycle component (see console):
+	<input type="checkbox" bind:checked={life} />
+	{#if life}
+		<LifeCycle />
+	{/if}
+</div>
 
 <div class="container">
 	<CardGrid {posts} />
