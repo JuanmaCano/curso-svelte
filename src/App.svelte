@@ -2,6 +2,8 @@
 	import Navbar from './design/header.svelte';
 	import CardGrid from './posts/cardGrid.svelte';
 	import InputCustom from './design/inputCustom.svelte';
+	import Jumbotron from './design/jumbotron.svelte';
+
 	const color = 'danger';
 	let title = '';
 	let description = '';
@@ -45,11 +47,19 @@
 	<CardGrid {posts} />
 </div>
 
+<div class="container">
+	<Jumbotron title="Jumbotron">
+		<span slot="subtitle">Subtitle</span>
+		<span slot="paragraph"> Lorem ipsum, dolor sit amet consectetur </span>
+	</Jumbotron>
+</div>
+
 <hr />
 <div class="container">
 	<h3>Save Post</h3>
 	<form on:submit|preventDefault={addPost} class="my-3">
 		<InputCustom
+			control=""
 			type="text"
 			name="Title"
 			placeholder="Title"
@@ -60,6 +70,7 @@
 		/>
 
 		<InputCustom
+			control=""
 			type="text"
 			name="Imagen"
 			placeholder="Imagen"
@@ -71,6 +82,7 @@
 
 		<InputCustom
 			control="textarea"
+			type=""
 			name="Description"
 			placeholder="Description"
 			value={description}
