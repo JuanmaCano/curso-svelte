@@ -1,30 +1,39 @@
 <script>
-	export let name;
+	import Router from 'svelte-spa-router';
+	import {link, push} from 'svelte-spa-router';
+	import routes from './routes';
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<nav class="navbar navbar-expand-lg bg-light">
+	<div class="container-fluid">
+		<span class="navbar-brand" href="#">Svelte - routing</span>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon" />
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="/" use:link>Inicio</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/acerca/123/Juanma" use:link>Acerca de </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contacto" use:link>Contacto</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+<button on:click={() => push('/acerca/7')} class="btn btn-warning"> Acerca de </button>
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<Router {routes} />
